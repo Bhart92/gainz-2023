@@ -1,4 +1,3 @@
-import LandingView from "./views/LandingView";
 import { router } from "./router";
 import { RouterProvider } from "react-router-dom";
 import { useEffect } from "react";

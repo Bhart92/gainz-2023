@@ -1,4 +1,4 @@
-export default [
+export const sampleWorkouts = [
   {
     name: "Dumbbell Bench Press",
     type: "strength",

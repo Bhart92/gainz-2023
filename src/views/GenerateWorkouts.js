@@ -5,7 +5,7 @@ import SectionTitle from "../components/reusable/SectionTitle";
 import Onboard from "../components/onboarding/Onboard.js";
 import axios from "axios";
 import { config } from "../config";
-import sampleWorkouts from "../data/sampleWorkouts";
+import { sampleWorkouts } from "../data/sampleWorkouts";
 import { isTablet, isMobile } from "mobile-device-detect";
 
 const GenerateWorkouts = () => {
@@ -23,6 +23,7 @@ const GenerateWorkouts = () => {
       return "";
     }
   };
+  console.log(error);
   const onChangeHandler = (e) => {
     setMuscleGroup(e.target.value);
   };
@@ -88,7 +89,7 @@ const GenerateWorkouts = () => {
     const onboardWrapper = document.querySelector(".onboard");
 
     btns.map((btn) => {
-      toggleClass(btn, true, "disabled");
+      return toggleClass(btn, true, "disabled");
     });
     let currIndex = 0;
     let finalIndex = onboardHints.length - 1;
@@ -138,7 +139,7 @@ const GenerateWorkouts = () => {
         resetOnboarding(interval, background, select, onboardWrapper);
 
         btns.map((btn) => {
-          toggleClass(btn, false, "disabled");
+          return toggleClass(btn, false, "disabled");
         });
         return;
       }
@@ -167,9 +168,9 @@ const GenerateWorkouts = () => {
   };
   useEffect(() => {
     setTimeout(() => {
-      onboardSequence();
+      return onboardSequence();
     }, 1500);
-  }, []);
+  }, [onboardSequence]);
 
   return (
     <div className="generate-workouts">

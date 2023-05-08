@@ -35,8 +35,6 @@ const GenerateResults = ({ workouts, loading, getIsDesktop }) => {
         return legImg;
       case "quadriceps":
         return legImg;
-      case "quadriceps":
-        return legImg;
       case "abdominals":
         return absImg;
       default:
