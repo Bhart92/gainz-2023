@@ -1,4 +1,6 @@
-## Workout Randomizer made with React
+## Workout Randomizer made with React and api-ninja's free exercise api.
+
+User selects a muscle group and generates three random workouts for said muscle group. Users can tap the workout which will open youtube in a separate tab with a search query for the workout the user originally tapped. This gives the user access to several instructional videos on the workout generated in the app.
 
 ####
 
