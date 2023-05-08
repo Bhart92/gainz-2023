@@ -53,7 +53,7 @@ const GenerateWorkouts = () => {
 
           setWorkouts(threeWorkouts);
           clearTimeout(resTimeout);
-          setLoading("");
+          setLoading(false);
         }
       });
     } else {
