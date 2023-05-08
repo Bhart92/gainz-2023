@@ -1,7 +1,6 @@
 import React from "react";
 import GymIcon from "../imgs/GymIcon";
 import { Link } from "react-router-dom";
-import { isMobile, isTablet } from "mobile-device-detect";
 
 const LandingView = () => {
   return (
