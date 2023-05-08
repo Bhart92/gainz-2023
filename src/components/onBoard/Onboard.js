@@ -17,5 +17,4 @@ const Onboard = ({ hints, getIsDesktop }) => {
     </div>
   );
 };
-
 export default Onboard;
