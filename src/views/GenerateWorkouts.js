@@ -3,6 +3,7 @@ import GenerateInput from "../components/generateWorkouts/GenerateInput";
 import GenerateResults from "../components/generateWorkouts/GenerateResults";
 import SectionTitle from "../components/reusable/SectionTitle";
 import Onboard from "../components/onboarding/Onboard.js";
+import Error from "../components/error/Error";
 import axios from "axios";
 import { config } from "../config";
 import { sampleWorkouts } from "../data/sampleWorkouts";
@@ -31,33 +32,29 @@ const GenerateWorkouts = () => {
     if (muscleGroup.length > 0) {
       setWorkouts([]);
       setLoading("Fetching Workouts");
+
+      const resTimeout = setTimeout(() => {
+        setError("Something went wrong. Please try again later.");
+        return;
+      }, 7500);
+
       axios({
         method: "get",
         url: `https://api.api-ninjas.com/v1/exercises?muscle=${muscleGroup}`,
         headers: { "X-Api-Key": config.key },
         contentType: "application/json",
-      })
-        .then(async function (response) {
-          if (response.data.length > 0) {
-            const { a, b, c } = await generateRandomNums(response.data);
-            const threeWorkouts = response.data.filter(
-              (workout, index) => index === a || index === b || index === c
-            );
+      }).then(async function (response) {
+        if (response.data.length > 0) {
+          const { a, b, c } = await generateRandomNums(response.data);
+          const threeWorkouts = response.data.filter(
+            (workout, index) => index === a || index === b || index === c
+          );
 
-            setWorkouts(threeWorkouts);
-            setLoading("");
-          } else {
-            setError(
-              "Looks like something went wrong. Please refresh and try again."
-            );
-            setLoading("");
-          }
-        })
-        .catch(function (err) {
-          console.log("err");
-          console.log(err);
-          setError(err);
-        });
+          setWorkouts(threeWorkouts);
+          clearTimeout(resTimeout);
+          setLoading("");
+        }
+      });
     } else {
       return;
     }
@@ -213,6 +210,7 @@ const GenerateWorkouts = () => {
       <GenerateResults
         getIsDesktop={getIsDesktop}
         loading={loading}
+        error={error}
         workouts={onboarding ? sampleWorkouts : workouts}
       />
     </div>

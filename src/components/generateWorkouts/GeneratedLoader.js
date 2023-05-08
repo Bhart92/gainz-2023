@@ -1,9 +1,9 @@
 import React from "react";
 
-const GeneratedLoader = () => {
+const GeneratedLoader = ({ content }) => {
   return (
     <div className="generate-results-loader">
-      <span>Fetching workouts...</span>
+      <span>{content}</span>
     </div>
   );
 };

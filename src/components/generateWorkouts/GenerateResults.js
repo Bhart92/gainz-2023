@@ -9,7 +9,7 @@ import GeneratedWorkout from "./GeneratedWorkout";
 import GeneratedLoader from "./GeneratedLoader";
 import GeneratedWorkouts from "./GeneratedWorkouts";
 
-const GenerateResults = ({ workouts, loading, getIsDesktop }) => {
+const GenerateResults = ({ workouts, loading, error, getIsDesktop }) => {
   const generateLink = (name) => {
     return name.replaceAll(" ", "+").replaceAll("/", "+").replaceAll("-", "+");
   };
@@ -66,7 +66,13 @@ const GenerateResults = ({ workouts, loading, getIsDesktop }) => {
         <span>Your workouts</span>
       </div>
       {loading ? (
-        <GeneratedLoader />
+        <GeneratedLoader
+          content={
+            error && error.length > 0
+              ? "Something went wrong. Please try again later."
+              : "Fetching Workouts..."
+          }
+        />
       ) : (
         <GeneratedWorkouts generator={generateWorkoutMarkup} />
       )}
