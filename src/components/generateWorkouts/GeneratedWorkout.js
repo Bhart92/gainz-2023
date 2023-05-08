@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 
 const GeneratedWorkout = ({ workout, i, generateLink, img }) => {
   useEffect(() => {
-    const eleArr = Array.from(document.querySelectorAll(".image-wrapper"));
+    const eleArr = Array.from(document.querySelectorAll(".generated-workout"));
     eleArr.map((ele) => {
-      return ele.classList.add("active");
+      ele.classList.add("active");
     });
+
     return () => {
       eleArr.map((ele) => {
-        return ele.classList.remove("active");
+        ele.classList.remove("active");
       });
     };
   });

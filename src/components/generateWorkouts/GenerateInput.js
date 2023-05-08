@@ -18,7 +18,7 @@ const GenerateInput = ({
         onChange={onChangeHandler}
       >
         <option value=""></option>
-        <option value="chest">Chest</option>
+        <option value="cst">Chest</option>
         <option value="lats">Lats</option>
         <option value="biceps">Biceps</option>
         <option value="triceps">Triceps</option>

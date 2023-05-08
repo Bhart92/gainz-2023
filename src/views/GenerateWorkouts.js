@@ -54,6 +54,8 @@ const GenerateWorkouts = () => {
           }
         })
         .catch(function (err) {
+          console.log("err");
+          console.log(err);
           setError(err);
         });
     } else {
@@ -148,9 +150,10 @@ const GenerateWorkouts = () => {
   const resetOnboarding = (interval, background, select, onboardWrapper) => {
     clearInterval(interval);
 
-    setTimeout(() => {
-      onResetHandler();
-    }, 3500);
+    // setTimeout(() => {
+    //   console.log("reset");
+    //   onResetHandler();
+    // }, 3500);
 
     toggleClass(onboardWrapper, false, "extended");
     setOnboarding(false);
