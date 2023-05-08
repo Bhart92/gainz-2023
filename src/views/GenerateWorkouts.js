@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GenerateInput from "../components/generateWorkouts/GenerateInput";
 import GenerateResults from "../components/generateWorkouts/GenerateResults";
 import SectionTitle from "../components/reusable/SectionTitle";
-import Onboard from "../components/onboard/Onboard";
+import Onboard from "../components/onboarding/Onboard.js";
 import axios from "axios";
 import { config } from "../config";
 import sampleWorkouts from "../data/sampleWorkouts";
