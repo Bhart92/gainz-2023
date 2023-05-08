@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { isMobile, isTablet } from "mobile-device-detect";
 
 const LandingView = () => {
-  const isDesktop = !isMobile && !isTablet;
   return (
     <div className="landing">
       <div className="landing-content">
