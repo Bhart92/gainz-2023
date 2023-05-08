@@ -166,11 +166,12 @@ const GenerateWorkouts = () => {
       target.classList.remove(className);
     }
   };
+
   useEffect(() => {
     setTimeout(() => {
       return onboardSequence();
     }, 1500);
-  }, [onboardSequence]);
+  }, []);
 
   return (
     <div className="generate-workouts">
