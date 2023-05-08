@@ -16,11 +16,11 @@ const GeneratedWorkout = ({ workout, i, generateLink, img }) => {
     <div className="generated-workout">
       <img src={img} alt={img} />
       <a
-        ref="noreferrer"
         href={`https://www.youtube.com/results?search_query=${generateLink(
           workout.name
         )}`}
         target="_blank"
+        rel="noreferrer"
         data-index={i}
         value={i}
         className="workout"
