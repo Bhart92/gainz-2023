@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+html,
+body {
+  background: #272838;
+
+  @media screen and (max-width: $tablet) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: $phone-lg) {
+    font-size: 12px;
+  }
+  @media screen and (max-width: $phone-md) {
+    font-size: 10px;
+  }
+  @media screen and (max-width: $phone-sm) {
+    font-size: 8px;
+  }
+  @media (orientation: landscape) {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+:root {
+  --vh: 1vh;
+  --vw: 1vw;
+  @include media-min($tablet-sm) {
+    --vw: 1vw * 0.8;
+  }
+}

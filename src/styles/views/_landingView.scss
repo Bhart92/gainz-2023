@@ -1,0 +1,61 @@
+.landing {
+  background: $black;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $orange;
+  &-content {
+    border: 1px solid $orange;
+    border-radius: 10px;
+    height: 250px;
+    width: 450px;
+    max-width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  &-header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    font-family: "patuaOne";
+    h1 {
+      position: relative;
+      letter-spacing: 2px;
+      font-weight: 300;
+      font-size: 38px;
+      svg {
+        height: 50px;
+        width: 75px;
+        transform: translateX(-10px);
+        position: absolute;
+      }
+    }
+    h2 {
+      letter-spacing: 2px;
+      font-weight: 300;
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+  }
+  a {
+    border: 2px solid $orange;
+    text-decoration: none;
+    color: $orange;
+    transition: all 0.35s ease;
+    border-radius: 25px;
+    padding: 8px 15px;
+    font-family: "Helvetica";
+    &:link {
+      color: $orange;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: $orange;
+      color: $black;
+    }
+  }
+}

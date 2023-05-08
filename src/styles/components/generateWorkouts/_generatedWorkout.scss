@@ -1,0 +1,27 @@
+.generated-workout {
+  transform: translateY(120%);
+  transition: all 0.35s ease;
+  display: flex;
+  align-items: center;
+  &.active {
+    transform: translateY(0%);
+  }
+  img {
+    margin-right: 5px;
+    max-height: 30px;
+    max-width: 30px;
+  }
+  a {
+    display: block;
+    position: relative;
+    z-index: 2;
+    font-size: 16px;
+    color: $white;
+    text-decoration: none;
+    transition: all 0.35s ease;
+    &:active,
+    &:hover {
+      color: $orange;
+    }
+  }
+}

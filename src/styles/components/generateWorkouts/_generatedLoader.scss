@@ -1,0 +1,11 @@
+.generate-results-loader {
+  margin: vw(35);
+  opacity: 1;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  &.de-active {
+    opacity: 0;
+  }
+}

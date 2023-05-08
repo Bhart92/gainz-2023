@@ -1,0 +1,26 @@
+.generate-workouts-header {
+  border: 2px dashed $orange;
+  width: fit-content;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 35px;
+  width: 85%;
+  font-family: "patuaOne";
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 10px;
+  &.is-desktop {
+    width: 60%;
+    padding: 15px 20px;
+  }
+  h1 {
+    font-size: 24px;
+    letter-spacing: 1.5px;
+  }
+  span {
+    font-size: 14px;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+}
