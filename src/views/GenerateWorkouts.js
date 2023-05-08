@@ -63,6 +63,7 @@ const GenerateWorkouts = () => {
   const onResetHandler = () => {
     setMuscleGroup("");
     setWorkouts("");
+    setError("");
   };
   const generateRandomNums = (workouts) => {
     return new Promise((resolve) => {
