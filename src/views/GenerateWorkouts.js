@@ -61,6 +61,7 @@ const GenerateWorkouts = () => {
     }
   };
   const onResetHandler = () => {
+    setLoading(false);
     setMuscleGroup("");
     setWorkouts("");
     setError("");
