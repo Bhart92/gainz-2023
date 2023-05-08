@@ -3,7 +3,6 @@ import GenerateInput from "../components/generateWorkouts/GenerateInput";
 import GenerateResults from "../components/generateWorkouts/GenerateResults";
 import SectionTitle from "../components/reusable/SectionTitle";
 import Onboard from "../components/onboarding/Onboard.js";
-import Error from "../components/error/Error";
 import axios from "axios";
 import { config } from "../config";
 import { sampleWorkouts } from "../data/sampleWorkouts";
@@ -32,7 +31,9 @@ const GenerateWorkouts = () => {
     if (muscleGroup.length > 0) {
       setWorkouts([]);
       setLoading("Fetching Workouts");
-
+      // since api doesnt return an error on invalid string
+      // set time checks if 7 seconds has gone by
+      // if true set error and return func
       const resTimeout = setTimeout(() => {
         setError("Something went wrong. Please try again later.");
         return;
