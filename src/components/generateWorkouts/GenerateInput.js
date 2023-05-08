@@ -2,7 +2,6 @@ import React from "react";
 
 const GenerateInput = ({
   muscleGroup,
-  workouts,
   onChangeHandler,
   onGenerate,
   onReset,
