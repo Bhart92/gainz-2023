@@ -12,6 +12,7 @@ const GenerateWorkouts = () => {
   const [muscleGroup, setMuscleGroup] = useState("");
   const [workouts, setWorkouts] = useState();
   const [error, setError] = useState();
+  const [timeout, setTimout] = useState();
   const [loading, setLoading] = useState(false);
   const [onboarding, setOnboarding] = useState(false);
   const [onboardInput, setOnboardInput] = useState(false);
@@ -23,21 +24,26 @@ const GenerateWorkouts = () => {
       return "";
     }
   };
-  console.log(error);
   const onChangeHandler = (e) => {
     setMuscleGroup(e.target.value);
   };
   const onGenerateHandler = () => {
     if (muscleGroup.length > 0) {
       setWorkouts([]);
+      const btns = Array.from(document.querySelectorAll(".btn"));
+      btns.map((btn) => {
+        btn.classList.add("disabled");
+      });
       setLoading("Fetching Workouts");
       // since api doesnt return an error on invalid string
       // set time checks if 7 seconds has gone by
       // if true set error and return func
-      const resTimeout = setTimeout(() => {
-        setError("Something went wrong. Please try again later.");
-        return;
-      }, 7500);
+      setTimeout(
+        setTimeout(() => {
+          setError("Something went wrong. Please try again later.");
+          return;
+        }, 7500)
+      );
 
       axios({
         method: "get",
@@ -52,7 +58,10 @@ const GenerateWorkouts = () => {
           );
 
           setWorkouts(threeWorkouts);
-          clearTimeout(resTimeout);
+          btns.map((btn) => {
+            btn.classList.remove("disabled");
+          });
+          clearTimeout(timeout);
           setLoading(false);
         }
       });
@@ -61,10 +70,12 @@ const GenerateWorkouts = () => {
     }
   };
   const onResetHandler = () => {
+    clearTimeout(timeout);
     setLoading(false);
     setMuscleGroup("");
     setWorkouts("");
     setError("");
+    return;
   };
   const generateRandomNums = (workouts) => {
     return new Promise((resolve) => {

@@ -38,7 +38,7 @@ const GenerateInput = ({
         >
           GENERATE
         </button>
-        <button className="btn disabled" onClick={onReset}>
+        <button className="btn disabled reset" onClick={onReset}>
           RESET
         </button>
       </div>
