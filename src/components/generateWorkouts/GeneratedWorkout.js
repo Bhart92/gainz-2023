@@ -3,16 +3,19 @@ import React, { useEffect } from "react";
 const GeneratedWorkout = ({ workout, i, generateLink, img }) => {
   useEffect(() => {
     const eleArr = Array.from(document.querySelectorAll(".generated-workout"));
-    eleArr.map((ele) => {
-      ele.classList.add("active");
-    });
+
+    setTimeout(() => {
+      eleArr.map((ele) => {
+        ele.classList.add("active");
+      });
+    }, 250);
 
     return () => {
       eleArr.map((ele) => {
         ele.classList.remove("active");
       });
     };
-  });
+  }, []);
   return (
     <div className="generated-workout">
       <img src={img} alt={img} />

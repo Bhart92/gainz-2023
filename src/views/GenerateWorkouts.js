@@ -29,6 +29,7 @@ const GenerateWorkouts = () => {
   };
   const onGenerateHandler = () => {
     if (muscleGroup.length > 0) {
+      setError("");
       setWorkouts([]);
       const btns = Array.from(document.querySelectorAll(".btn"));
       btns.map((btn) => {

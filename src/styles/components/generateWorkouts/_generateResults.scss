@@ -16,7 +16,7 @@
   &.is-desktop {
     width: 60%;
     padding: vh(45, $design-height-desktop);
-    height: auto;
+    height: vh(315);
     .generate-results-workouts {
       padding-bottom: 0;
       .workout-wrapper {
