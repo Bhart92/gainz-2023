@@ -7,7 +7,7 @@
 html,
 body {
   background: #272838;
-
+  overflow: hidden;
   @media screen and (max-width: $tablet) {
     font-size: 14px;
   }
