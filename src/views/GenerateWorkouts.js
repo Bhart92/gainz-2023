@@ -14,7 +14,9 @@ const GenerateWorkouts = () => {
   const [error, setError] = useState();
   const [timeout, setTimout] = useState();
   const [loading, setLoading] = useState(false);
-  const [onboarding, setOnboarding] = useState(false);
+  const [fetchingData, setFetchingData] = useState(false);
+  const [onboarding, setOnboarding] = useState(true);
+  const [sampleData, setSampleData] = useState(false);
   const [onboardInput, setOnboardInput] = useState(false);
 
   const getIsDesktop = () => {
@@ -31,21 +33,20 @@ const GenerateWorkouts = () => {
     if (muscleGroup.length > 0) {
       setError("");
       setWorkouts([]);
-      const btns = Array.from(document.querySelectorAll(".btn"));
-      btns.map((btn) => {
-        btn.classList.add("disabled");
-      });
       setLoading("Fetching Workouts");
+
       // since api doesnt return an error on invalid string
       // set time checks if 7 seconds has gone by
       // if true set error and return func
       setTimeout(
         setTimeout(() => {
           setError("Something went wrong. Please try again later.");
+
+          setFetchingData(false);
           return;
         }, 7500)
       );
-
+      setFetchingData(true);
       axios({
         method: "get",
         url: `https://api.api-ninjas.com/v1/exercises?muscle=${muscleGroup}`,
@@ -57,11 +58,8 @@ const GenerateWorkouts = () => {
           const threeWorkouts = response.data.filter(
             (workout, index) => index === a || index === b || index === c
           );
-
           setWorkouts(threeWorkouts);
-          btns.map((btn) => {
-            btn.classList.remove("disabled");
-          });
+          setFetchingData(false);
           clearTimeout(timeout);
           setLoading(false);
         }
@@ -98,13 +96,9 @@ const GenerateWorkouts = () => {
     const onboardHints = Array.from(document.querySelectorAll(".onboard-hint"));
     const onboardSteps = Array.from(document.querySelectorAll(".onboard-step"));
     const select = document.querySelector(".generate-workouts-input select");
-    const btns = Array.from(document.querySelectorAll(".btn"));
     const background = document.querySelector(".onboard-background");
     const onboardWrapper = document.querySelector(".onboard");
 
-    btns.map((btn) => {
-      return toggleClass(btn, true, "disabled");
-    });
     let currIndex = 0;
     let finalIndex = onboardHints.length - 1;
 
@@ -131,7 +125,7 @@ const GenerateWorkouts = () => {
         setTimeout(() => {
           if (currIndex === 1) {
             toggleClass(onboardWrapper, true, "extended");
-            setOnboarding(true);
+            setSampleData(true);
           }
         }, 500);
 
@@ -149,12 +143,10 @@ const GenerateWorkouts = () => {
           clearTimeout(timeout);
         }, 2000);
       } else {
+        setOnboarding(false);
         // resets onboarding when hint / steps are completed
         resetOnboarding(interval, background, select, onboardWrapper);
 
-        btns.map((btn) => {
-          return toggleClass(btn, false, "disabled");
-        });
         return;
       }
     }, 2500);
@@ -162,13 +154,8 @@ const GenerateWorkouts = () => {
   const resetOnboarding = (interval, background, select, onboardWrapper) => {
     clearInterval(interval);
 
-    // setTimeout(() => {
-    //   console.log("reset");
-    //   onResetHandler();
-    // }, 3500);
-
     toggleClass(onboardWrapper, false, "extended");
-    setOnboarding(false);
+    setSampleData(false);
     setOnboardInput(false);
 
     toggleClass(select, false, "disabled");
@@ -221,12 +208,13 @@ const GenerateWorkouts = () => {
         onReset={onResetHandler}
         onboarding={onboarding}
         getIsDesktop={getIsDesktop}
+        fetchingData={fetchingData}
       />
       <GenerateResults
         getIsDesktop={getIsDesktop}
         loading={loading}
         error={error}
-        workouts={onboarding ? sampleWorkouts : workouts}
+        workouts={sampleData ? sampleWorkouts : workouts}
       />
     </div>
   );

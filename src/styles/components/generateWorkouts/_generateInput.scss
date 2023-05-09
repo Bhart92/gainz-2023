@@ -48,8 +48,12 @@
       cursor: pointer;
       letter-spacing: 1.5px;
       transition: all 0.35s ease;
+      &.active-hint {
+        opacity: 1 !important;
+      }
       &.disabled {
         pointer-events: none;
+        opacity: 0.35;
       }
       &:first-of-type {
         margin-right: 10px;

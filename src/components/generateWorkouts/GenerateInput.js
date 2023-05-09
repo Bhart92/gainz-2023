@@ -5,6 +5,7 @@ const GenerateInput = ({
   onChangeHandler,
   onGenerate,
   onReset,
+  fetchingData,
   onboarding,
   getIsDesktop,
 }) => {
@@ -32,13 +33,26 @@ const GenerateInput = ({
       </select>
       <div className="btns">
         <button
-          className="btn onboard-step disabled"
+          className={`btn onboard-step ${
+            muscleGroup.length > 0 && !onboarding && !fetchingData
+              ? ""
+              : "disabled"
+          }`}
           disabled={onboarding}
           onClick={onGenerate}
         >
           GENERATE
         </button>
-        <button className="btn disabled reset" onClick={onReset}>
+
+        <button
+          className={`btn reset ${
+            muscleGroup.length > 0 && !onboarding && !fetchingData
+              ? ""
+              : "disabled"
+          }
+          `}
+          onClick={onReset}
+        >
           RESET
         </button>
       </div>
