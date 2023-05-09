@@ -74,7 +74,10 @@ const GenerateResults = ({ workouts, loading, error, getIsDesktop }) => {
           }
         />
       ) : (
-        <GeneratedWorkouts generator={generateWorkoutMarkup} />
+        <GeneratedWorkouts
+          generator={generateWorkoutMarkup}
+          getIsDesktop={getIsDesktop}
+        />
       )}
     </div>
   );

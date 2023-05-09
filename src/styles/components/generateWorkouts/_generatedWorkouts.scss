@@ -1,11 +1,31 @@
 .generate-results-workouts {
-  padding: 0 35px 10px 35px;
+  padding: 0 35px;
+  &.is-desktop {
+    .workout-wrapper {
+      &:first-of-type {
+        margin-top: vh(15) !important;
+      }
+    }
+  }
   @media screen and (max-width: 350px) {
     padding: 0 vw(35);
   }
   .workout-wrapper {
     margin: vw(40) 0;
     position: relative;
+
+    @media screen and (orientation: landscape) {
+      margin: vw(25) 0;
+    }
+    &:first-of-type {
+      margin-top: 0;
+    }
+    &:last-of-type {
+      margin-bottom: vh(25);
+      @media screen and (orientation: landscape) {
+        margin-bottom: vw(20);
+      }
+    }
     @media screen and (max-width: 350px) {
       padding-bottom: 0;
       &:last-of-type {

@@ -1,10 +1,14 @@
 .generate-results-loader {
-  margin: vw(35);
+  margin: 0;
   opacity: 1;
   width: 100%;
   align-items: center;
   display: flex;
   justify-content: center;
+  margin-bottom: vh(20);
+  span {
+    font-size: 15px;
+  }
   &.de-active {
     opacity: 0;
   }
