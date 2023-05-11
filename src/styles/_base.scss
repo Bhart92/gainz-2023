@@ -23,7 +23,7 @@ body {
   @media (orientation: landscape) {
     transform: translate3d(0, 0, 0);
   }
-  @media screen and (orientation: landscape) {
+  @media screen and (orientation: landscape) and (max-width: 800px) {
     overflow: scroll;
   }
 }
