@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import GenerateInput from "../components/generateWorkouts/GenerateInput";
 import GenerateResults from "../components/generateWorkouts/GenerateResults";
 import SectionTitle from "../components/reusable/SectionTitle";
-import Onboard from "../components/onboarding/Onboard.js";
 import axios from "axios";
 import { config } from "../config";
 import { sampleWorkouts } from "../data/sampleWorkouts";
@@ -93,11 +92,12 @@ const GenerateWorkouts = () => {
   };
   const onboardSequence = () => {
     onResetHandler();
+
     const onboardHints = Array.from(document.querySelectorAll(".onboard-hint"));
     const onboardSteps = Array.from(document.querySelectorAll(".onboard-step"));
+
     const select = document.querySelector(".generate-workouts-input select");
     const background = document.querySelector(".onboard-background");
-    const onboardWrapper = document.querySelector(".onboard");
 
     let currIndex = 0;
     let finalIndex = onboardHints.length - 1;
@@ -124,7 +124,6 @@ const GenerateWorkouts = () => {
         // sets sample data to workout results
         setTimeout(() => {
           if (currIndex === 1) {
-            toggleClass(onboardWrapper, true, "extended");
             setSampleData(true);
           }
         }, 500);
@@ -145,16 +144,15 @@ const GenerateWorkouts = () => {
       } else {
         setOnboarding(false);
         // resets onboarding when hint / steps are completed
-        resetOnboarding(interval, background, select, onboardWrapper);
+        resetOnboarding(interval, background, select);
 
         return;
       }
     }, 2500);
   };
-  const resetOnboarding = (interval, background, select, onboardWrapper) => {
+  const resetOnboarding = (interval, background, select) => {
     clearInterval(interval);
 
-    toggleClass(onboardWrapper, false, "extended");
     setSampleData(false);
     setOnboardInput(false);
 
@@ -169,7 +167,7 @@ const GenerateWorkouts = () => {
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setTimeout(() => {
       return onboardSequence();
     }, 1500);
@@ -177,29 +175,14 @@ const GenerateWorkouts = () => {
 
   return (
     <div className="generate-workouts">
+      <div className="onboard-background" />
       <SectionTitle
         className={`generate-workouts-header ${getIsDesktop()}`}
         text={"Generate Workouts"}
         subText={"HELP"}
         fx={onboardSequence}
       />
-      <Onboard
-        getIsDesktop={getIsDesktop}
-        hints={[
-          {
-            content: "Click the dropdown and select a muscle group.",
-            id: 1,
-          },
-          {
-            content: 'Tap "Generate"',
-            id: 2,
-          },
-          {
-            content: "Tap a workout for tutorials",
-            id: 3,
-          },
-        ]}
-      />
+
       <GenerateInput
         muscleGroup={onboardInput ? "chest" : muscleGroup}
         workouts={workouts}

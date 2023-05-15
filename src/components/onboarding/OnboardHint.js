@@ -1,10 +1,12 @@
 import React from "react";
 
-const OnboardHint = ({ content }) => {
+const OnboardHint = ({ content, classname }) => {
   return (
-    <div className="onboard-hint">
-      <div className="arrow" />
-      <span>{content}</span>
+    <div className={`onboard-hint ${classname}`}>
+      <div className="onboard-wrapper">
+        <div className="arrow" />
+        <span>{content}</span>
+      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import backImg from "../../imgs/back.png";
 import GeneratedWorkout from "./GeneratedWorkout";
 import GeneratedLoader from "./GeneratedLoader";
 import GeneratedWorkouts from "./GeneratedWorkouts";
+import OnboardHint from "../onboarding/OnboardHint";
 
 const GenerateResults = ({ workouts, loading, error, getIsDesktop }) => {
   const generateLink = (name) => {
@@ -79,6 +80,11 @@ const GenerateResults = ({ workouts, loading, error, getIsDesktop }) => {
           getIsDesktop={getIsDesktop}
         />
       )}
+
+      <OnboardHint
+        content={"Tap a workout for tutorials."}
+        classname={"generate-results-hint"}
+      />
     </div>
   );
 };
