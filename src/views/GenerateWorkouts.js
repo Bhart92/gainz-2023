@@ -119,8 +119,8 @@ const GenerateWorkouts = () => {
       if (currIndex <= finalIndex) {
         // removes active class from hint and step
         toggleClass(onboardHints[0], false, "active-hint");
-        toggleClass(onboardSteps[0], false, "active-hint");
 
+        if (currIndex > 1) toggleClass(onboardSteps[0], false, "active-hint");
         // sets sample data to workout results
         setTimeout(() => {
           if (currIndex === 1) {

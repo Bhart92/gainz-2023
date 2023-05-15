@@ -1,5 +1,6 @@
 import React from "react";
 import OnboardHint from "../onboarding/OnboardHint";
+import GenerateInputBtn from "./GenerateInputBtn";
 const GenerateInput = ({
   muscleGroup,
   onChangeHandler,
@@ -38,28 +39,21 @@ const GenerateInput = ({
         />
       </div>
       <div className="btns">
-        <button
-          className={`btn onboard-step ${
-            muscleGroup.length > 0 && !onboarding && !fetchingData
-              ? ""
-              : "disabled"
-          }`}
-          disabled={onboarding}
-          onClick={onGenerate}
-        >
-          GENERATE
-        </button>
-        <button
-          className={`btn reset ${
-            muscleGroup.length > 0 && !onboarding && !fetchingData
-              ? ""
-              : "disabled"
-          }
-          `}
-          onClick={onReset}
-        >
-          RESET
-        </button>{" "}
+        <GenerateInputBtn
+          muscleGroup={muscleGroup}
+          onboarding={onboarding}
+          fetchingData={fetchingData}
+          clickEvt={onGenerate}
+          content={"GENERATE"}
+        />
+        <GenerateInputBtn
+          muscleGroup={muscleGroup}
+          onboarding={onboarding}
+          fetchingData={fetchingData}
+          clickEvt={onReset}
+          reset={true}
+          content={"RESET"}
+        />
         <OnboardHint
           content={"Tap Generate"}
           classname={"onboard-btns-input"}

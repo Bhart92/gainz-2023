@@ -1,13 +1,13 @@
 .onboard-hint {
   background: darken($black, 4%);
   border: 1px dashed $orange;
-  z-index: 1;
+  z-index: 16;
   border-radius: 10px;
   opacity: 0;
   transition: all 0.35s ease;
   height: 100%;
   width: 100%;
-
+  pointer-events: none;
   max-width: 215px;
   .onboard-wrapper {
     height: 100%;
@@ -45,6 +45,6 @@
   }
   &.active-hint {
     opacity: 1;
-    z-index: 11;
+    z-index: 16;
   }
 }
