@@ -23,8 +23,8 @@ const GeneratedWorkout = ({ workout, i, generateLink, img }) => {
         href={`https://www.youtube.com/results?search_query=${generateLink(
           workout.name
         )}`}
-        target="_blank"
-        rel="noreferrer"
+        // target="_blank"
+        // rel="noreferrer"
         data-index={i}
         value={i}
         className="workout"
