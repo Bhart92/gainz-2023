@@ -31,12 +31,6 @@
       transform: rotate(0deg);
       left: 6px;
       top: -10px;
-
-      &.is-desktop {
-        transform: rotate(-90deg);
-        left: -12px;
-        bottom: 9px;
-      }
     }
     span {
       color: $white;

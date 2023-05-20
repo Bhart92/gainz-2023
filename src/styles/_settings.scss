@@ -7,40 +7,6 @@ $phone-lg: 440px;
 $phone-md: 380px;
 $phone-sm: 330px;
 
-$tablet-landscape: 1050px;
-$phone-lg-landscape: 850px;
-$phone-md-landscape: 700px;
-$phone-sm-landscape: 600px;
-
-$design-height: 1920;
-
-$design-width-mobile: 375;
-$design-height-mobile: 667;
-
-$design-width-desktop: 1280;
-$design-height-desktop: 800;
-
-//convert design pixel size to viewport width
-@function vw($pxSize, $design-width: $design-width-mobile) {
-  $size: $pxSize / $design-width;
-
-  //@return $size * 100vw;
-  //@return calc(var(--vw) * #{$size * 100});
-  @return #{$size * 100}vw;
-}
-
-@function vh($pxSize, $design-height: $design-height-mobile) {
-  $size: $pxSize / $design-height;
-  //@return $size * 100vh;
-  @return calc(var(--vh) * #{$size * 100});
-}
-
-@mixin media-min($media) {
-  @media only screen and (min-width: #{$media}) {
-    @content;
-  }
-}
-
 @font-face {
   font-family: "patuaOne";
   src: url("./fonts/PatuaOne-Regular.ttf") format("truetype");

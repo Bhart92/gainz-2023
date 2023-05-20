@@ -18,13 +18,6 @@ const GenerateWorkouts = () => {
   const [sampleData, setSampleData] = useState(false);
   const [onboardInput, setOnboardInput] = useState(false);
 
-  const getIsDesktop = () => {
-    if (!isTablet && !isMobile) {
-      return "is-desktop";
-    } else {
-      return "";
-    }
-  };
   const onChangeHandler = (e) => {
     setMuscleGroup(e.target.value);
   };
@@ -177,7 +170,6 @@ const GenerateWorkouts = () => {
     <div className="generate-workouts">
       <div className="onboard-background" />
       <SectionTitle
-        className={`generate-workouts-header ${getIsDesktop()}`}
         text={"Generate Workouts"}
         subText={"HELP"}
         fx={onboardSequence}
@@ -190,11 +182,9 @@ const GenerateWorkouts = () => {
         onGenerate={onGenerateHandler}
         onReset={onResetHandler}
         onboarding={onboarding}
-        getIsDesktop={getIsDesktop}
         fetchingData={fetchingData}
       />
       <GenerateResults
-        getIsDesktop={getIsDesktop}
         loading={loading}
         error={error}
         workouts={sampleData ? sampleWorkouts : workouts}

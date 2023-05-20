@@ -10,7 +10,7 @@ import GeneratedLoader from "./GeneratedLoader";
 import GeneratedWorkouts from "./GeneratedWorkouts";
 import OnboardHint from "../onboarding/OnboardHint";
 
-const GenerateResults = ({ workouts, loading, error, getIsDesktop }) => {
+const GenerateResults = ({ workouts, loading, error }) => {
   const generateLink = (name) => {
     return name.replaceAll(" ", "+").replaceAll("/", "+").replaceAll("-", "+");
   };
@@ -62,7 +62,7 @@ const GenerateResults = ({ workouts, loading, error, getIsDesktop }) => {
     );
   };
   return (
-    <div className={`generate-results onboard-step ${getIsDesktop()}`}>
+    <div className="generate-results onboard-step">
       <div className="generate-results-title">
         <span>Your workouts</span>
       </div>
@@ -75,10 +75,7 @@ const GenerateResults = ({ workouts, loading, error, getIsDesktop }) => {
           }
         />
       ) : (
-        <GeneratedWorkouts
-          generator={generateWorkoutMarkup}
-          getIsDesktop={getIsDesktop}
-        />
+        <GeneratedWorkouts generator={generateWorkoutMarkup} />
       )}
 
       <OnboardHint

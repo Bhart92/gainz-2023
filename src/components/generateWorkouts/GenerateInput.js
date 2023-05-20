@@ -8,10 +8,9 @@ const GenerateInput = ({
   onReset,
   fetchingData,
   onboarding,
-  getIsDesktop,
 }) => {
   return (
-    <div className={`generate-workouts-wrapper onboard-step ${getIsDesktop()}`}>
+    <div className="generate-workouts-wrapper onboard-step">
       <div className="generate-workouts-input">
         <span>Select your muscle group</span>
         <select

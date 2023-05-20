@@ -20,8 +20,9 @@ body {
   @media screen and (max-width: $phone-sm) {
     font-size: 8px;
   }
-  @media (orientation: landscape) {
-    transform: translate3d(0, 0, 0);
+
+  @media screen and (max-width: 320px) {
+    overflow-y: scroll;
   }
   @media screen and (orientation: landscape) and (max-width: 600px) {
     overflow: scroll;
@@ -30,7 +31,4 @@ body {
 :root {
   --vh: 1vh;
   --vw: 1vw;
-  @include media-min($tablet-sm) {
-    --vw: 1vw * 0.8;
-  }
 }
